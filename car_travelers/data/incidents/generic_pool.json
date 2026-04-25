@@ -1,0 +1,44 @@
+{
+  "incidents": [
+    {
+      "id": "incident_weather_01",
+      "title": "Пыльная буря",
+      "description": "Горизонт пожелтел. Пыльная буря приближается.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Переждать в машине",
+          "cost": { "stress": 10, "food": -3 },
+          "trait_signal": { "character": "saryn", "trait": "cautious", "delta": 1 },
+          "outcome": "Буря прошла через час."
+        },
+        {
+          "text": "Ехать сквозь бурю",
+          "cost": { "vehicle_hp": -10, "stress": 20 },
+          "trait_signal": { "character": "saryn", "trait": "reckless", "delta": 1 },
+          "outcome": "Машина поцарапана. Все напуганы."
+        }
+      ]
+    },
+    {
+      "id": "incident_hitchhiker_01",
+      "title": "Попутчик",
+      "description": "На обочине стоит пожилой мужчина с чемоданом.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Взять с собой",
+          "cost": { "food": -5 },
+          "trait_signal": { "character": "gulnara", "trait": "trusting", "delta": 1 },
+          "outcome": "Он рассказал о скрытой дороге. -10 км пути."
+        },
+        {
+          "text": "Проехать мимо",
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Нет места. Едем дальше."
+        }
+      ]
+    }
+  ]
+}

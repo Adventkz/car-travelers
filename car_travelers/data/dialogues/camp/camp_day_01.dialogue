@@ -1,0 +1,61 @@
+# data/dialogues/camp/camp_day_01.dialogue
+~ start
+narrator: Ночь опустилась на стоянку. Где-то вдали воет ветер.
+
+jump saryn_mood_check
+
+~ saryn_mood_check
+if ResourceManager.stress >= 80:
+	jump saryn_high_stress
+elif ResourceManager.stress >= 50:
+	jump saryn_mid_stress
+else:
+	jump saryn_calm
+
+~ saryn_calm
+Сарын: Сегодня неплохо прошло. Почти не устал.
+- Согласиться
+	do TraitSystem.reinforce("saryn", "expressive", 1)
+	=> asel_check
+- Промолчать
+	do TraitSystem.reinforce("saryn", "withdrawn", 1)
+	=> asel_check
+
+~ saryn_mid_stress
+Сарын: Устал. Дорога была тяжёлой.
+- "Отдыхай, я подежурю."
+	do ResourceManager.modify("stress", -5)
+	do TraitSystem.reinforce("saryn", "protector", 1)
+	=> asel_check
+- "Завтра будет лучше."
+	do TraitSystem.reinforce("saryn", "idealist", 1)
+	=> asel_check
+
+~ saryn_high_stress
+Сарын: (сжимает руль) Нам нужно было ехать иначе. Я облажался.
+- "Ты сделал всё правильно."
+	do ResourceManager.modify("stress", -5)
+	do TraitSystem.reinforce("saryn", "protector", 1)
+	=> asel_check
+- Промолчать
+	do TraitSystem.reinforce("saryn", "withdrawn", 2)
+	=> asel_check
+
+~ asel_check
+if ResourceManager.food <= 15:
+	jump asel_food_low
+else:
+	jump camp_end
+
+~ asel_food_low
+Асель: Еды мало. Нужно найти магазин или рынок завтра.
+- "Разберёмся утром."
+	do TraitSystem.reinforce("asel", "pragmatic", 1)
+	=> camp_end
+- "Я знаю, где можно купить."
+	do GameState.set_flag("found_supply_point", true)
+	=> camp_end
+
+~ camp_end
+narrator: Семья устраивается на ночлег. Завтра — новая дорога.
+=> END

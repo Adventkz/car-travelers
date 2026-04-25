@@ -1,0 +1,117 @@
+{
+  "incidents": [
+    {
+      "id": "incident_road_blockade_01",
+      "title": "Блокпост",
+      "description": "На дороге стоят люди. Они требуют плату за проезд.",
+      "trigger": "route_node",
+      "choices": [
+        {
+          "text": "Заплатить",
+          "cost": { "fuel": -10 },
+          "trait_signal": { "character": "saryn", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Путь свободен."
+        },
+        {
+          "text": "Объехать через поле",
+          "cost": { "fuel": -5, "stress": 15 },
+          "trait_signal": { "character": "saryn", "trait": "protector", "delta": 1 },
+          "outcome": "Машина застряла на минуту, но все целы."
+        },
+        {
+          "text": "Попытаться договориться",
+          "requires": { "trait": "saryn_pragmatic", "min": 2 },
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "expressive", "delta": 1 },
+          "outcome": "Разговор помог. Пропустили бесплатно."
+        }
+      ]
+    },
+    {
+      "id": "incident_broken_car_01",
+      "title": "Прокол колеса",
+      "description": "Хлопок. Машина начинает вилять. Колесо спустило.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Заменить запаску самим",
+          "cost": { "stress": 10, "vehicle_hp": -5 },
+          "trait_signal": { "character": "daniyar", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Справились. Потеряли час."
+        },
+        {
+          "text": "Попросить помощь у проезжающих",
+          "cost": { "stress": 5 },
+          "trait_signal": { "character": "saryn", "trait": "trusting", "delta": 1 },
+          "outcome": "Добрые люди помогли быстро."
+        }
+      ]
+    },
+    {
+      "id": "incident_lost_road_01",
+      "title": "Потеряли дорогу",
+      "description": "GPS не работает. Развилка без указателей.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Ехать по интуиции",
+          "cost": { "fuel": -15, "stress": 10 },
+          "trait_signal": { "character": "saryn", "trait": "reckless", "delta": 1 },
+          "outcome": "Объехали лишние 20 км."
+        },
+        {
+          "text": "Остановиться и спросить местных",
+          "cost": { "stress": -5 },
+          "trait_signal": { "character": "asel", "trait": "trusting", "delta": 1 },
+          "outcome": "Старик показал верный путь."
+        },
+        {
+          "text": "Данияр вспоминает карту",
+          "cost": {},
+          "trait_signal": { "character": "daniyar", "trait": "cautious", "delta": 1 },
+          "outcome": "Он запомнил развилку. Едем верно."
+        }
+      ]
+    },
+    {
+      "id": "incident_stray_dog_01",
+      "title": "Бродячая собака",
+      "description": "На дороге стоит раненая собака. Дети её заметили первыми.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Остановиться и помочь",
+          "cost": { "food": -5, "stress": -5 },
+          "trait_signal": { "character": "saryn", "trait": "protector", "delta": 1 },
+          "outcome": "Мирас счастлив. Настроение поднялось."
+        },
+        {
+          "text": "Проехать мимо",
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Едем дальше. Мирас молчит."
+        }
+      ]
+    },
+    {
+      "id": "incident_fuel_station_01",
+      "title": "Заправка только за наличные",
+      "description": "Единственная заправка в округе. Принимают только наличные.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Найти наличные в вещах",
+          "cost": { "stress": 5 },
+          "trait_signal": { "character": "asel", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Нашли мятые купюры. Заправились."
+        },
+        {
+          "text": "Ехать дальше в надежде на другую заправку",
+          "cost": { "stress": 15 },
+          "trait_signal": { "character": "saryn", "trait": "reckless", "delta": 1 },
+          "outcome": "Следующая заправка через 40 км."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://mapview"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/map_view.gd" id="1"]
+
+[node name="MapView" type="Node2D"]
+script = ExtResource("1")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.08, 0.1, 0.18, 1)
+z_index = -1
+
+[node name="NodesContainer" type="Node2D" parent="."]
+
+[node name="InfoPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 580.0
+offset_right = 460.0
+offset_bottom = 700.0
+
+[node name="InfoLabel" type="Label" parent="InfoPanel"]
+text = "Выберите следующий пункт маршрута"
+autowrap_mode = 3

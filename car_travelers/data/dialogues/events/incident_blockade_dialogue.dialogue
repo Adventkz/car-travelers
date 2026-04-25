@@ -1,0 +1,34 @@
+# data/dialogues/events/incident_blockade_dialogue.dialogue
+~ start
+narrator: Мужчина в потёртой куртке выходит навстречу.
+Незнакомец: Дорога платная. Сто.
+
+if TraitSystem.check("saryn", "authoritarian", 5):
+	jump saryn_authoritarian_response
+else:
+	jump saryn_default
+
+~ saryn_authoritarian_response
+Сарын: (холодно) Убери руку с машины. Мы едем.
+Незнакомец: (отступает) Ладно, ладно... проезжайте.
+do TraitSystem.reinforce("saryn", "authoritarian", 1)
+=> END
+
+~ saryn_default
+Сарын: За что платить? Это государственная дорога.
+Незнакомец: За порядок на ней.
+- "Хорошо, заплатим."
+	do ResourceManager.modify("fuel", -10)
+	=> paid_end
+- "Мы объедем."
+	do ResourceManager.modify("stress", 10)
+	=> bypass_end
+
+~ paid_end
+Незнакомец: Проезжайте.
+narrator: Дорога свободна.
+=> END
+
+~ bypass_end
+narrator: Машина съезжает на грунтовку. Пыль клубится за колёсами.
+=> END

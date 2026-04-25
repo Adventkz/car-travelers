@@ -1,0 +1,24 @@
+{
+  "incidents": [
+    {
+      "id": "incident_fuel_critical_01",
+      "title": "Заглохли",
+      "description": "Топливо на исходе. Машина заглохла посреди дороги.",
+      "trigger": "resource_threshold",
+      "choices": [
+        {
+          "text": "Идти пешком за топливом",
+          "cost": { "food": -10, "stress": 25 },
+          "trait_signal": { "character": "saryn", "trait": "protector", "delta": 1 },
+          "outcome": "Вернулись с канистрой через три часа."
+        },
+        {
+          "text": "Ждать помощи на дороге",
+          "cost": { "stress": 15, "food": -5 },
+          "trait_signal": { "character": "asel", "trait": "trusting", "delta": 1 },
+          "outcome": "Через два часа остановилась попутка."
+        }
+      ]
+    }
+  ]
+}
