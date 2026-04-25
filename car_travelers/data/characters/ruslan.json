@@ -1,0 +1,16 @@
+{
+  "char_id": "ruslan",
+  "display_name": "Руслан",
+  "age": 27,
+  "family_id": "family_b",
+  "role": "leader",
+  "portrait_path": "res://assets/visuals/characters/ruslan/portrait_neutral.png",
+  "voice_profile": "deep_male",
+  "biography_key": "bio_ruslan",
+  "traits": {
+    "reckless": 4,
+    "cautious": 1,
+    "pragmatic": 3,
+    "idealist": 1
+  }
+}

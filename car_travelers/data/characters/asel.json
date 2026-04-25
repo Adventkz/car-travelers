@@ -1,0 +1,18 @@
+{
+  "char_id": "asel",
+  "display_name": "Асель",
+  "age": 32,
+  "family_id": "family_a",
+  "role": "partner",
+  "portrait_path": "res://assets/visuals/characters/asel/portrait_neutral.png",
+  "voice_profile": "soft_female",
+  "biography_key": "bio_asel",
+  "traits": {
+    "expressive": 4,
+    "withdrawn": 1,
+    "cautious": 3,
+    "reckless": 1,
+    "pragmatic": 2,
+    "idealist": 2
+  }
+}

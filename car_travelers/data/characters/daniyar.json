@@ -1,0 +1,17 @@
+{
+  "char_id": "daniyar",
+  "display_name": "Данияр",
+  "age": 17,
+  "family_id": "family_a",
+  "role": "teen",
+  "portrait_path": "res://assets/visuals/characters/daniyar/portrait_neutral.png",
+  "voice_profile": "teen_male",
+  "biography_key": "bio_daniyar",
+  "traits": {
+    "reckless": 3,
+    "cautious": 1,
+    "idealist": 3,
+    "pragmatic": 1,
+    "expressive": 2
+  }
+}

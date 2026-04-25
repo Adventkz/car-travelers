@@ -1,0 +1,61 @@
+{
+  "id": "camp_day_01",
+  "lines": [
+    {
+      "speaker": "",
+      "text": "Ночь опустилась на стоянку. Где-то вдали воет ветер.",
+      "portrait": ""
+    },
+    {
+      "speaker": "Сарын",
+      "text": "Сегодня неплохо прошло. Почти не устал.",
+      "portrait": "res://assets/visuals/characters/saryn/portrait_neutral.png",
+      "choices": [
+        {
+          "text": "Согласиться",
+          "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "saryn", "trait_id": "expressive", "delta": 1 }],
+          "jump": "asel_check"
+        },
+        {
+          "text": "Промолчать",
+          "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "saryn", "trait_id": "withdrawn", "delta": 1 }],
+          "jump": "asel_check"
+        }
+      ]
+    },
+    {
+      "label": "asel_check",
+      "speaker": "Асель",
+      "text": "Мирас опять не ел нормально. Надо следить за едой.",
+      "portrait": "res://assets/visuals/characters/asel/portrait_neutral.png",
+      "choices": [
+        {
+          "text": "«Завтра найдём магазин.»",
+          "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "asel", "trait_id": "pragmatic", "delta": 1 }],
+          "jump": "miras_line"
+        },
+        {
+          "text": "«Всё под контролем, не волнуйся.»",
+          "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "saryn", "trait_id": "protector", "delta": 1 }],
+          "jump": "miras_line"
+        }
+      ]
+    },
+    {
+      "label": "miras_line",
+      "speaker": "Мирас",
+      "text": "Папа, а мы уже близко? Когда приедем?",
+      "portrait": ""
+    },
+    {
+      "speaker": "Сарын",
+      "text": "(вздыхает) Скоро, сынок. Скоро.",
+      "portrait": "res://assets/visuals/characters/saryn/portrait_neutral.png",
+      "mutations": [{ "fn": "ResourceManager.modify", "type": "stress", "delta": -3 }]
+    },
+    {
+      "speaker": "",
+      "text": "Семья устраивается на ночлег. Завтра — новая дорога."
+    }
+  ]
+}

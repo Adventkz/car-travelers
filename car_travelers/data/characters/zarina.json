@@ -1,0 +1,16 @@
+{
+  "char_id": "zarina",
+  "display_name": "Зарина",
+  "age": 15,
+  "family_id": "family_a",
+  "role": "teen",
+  "portrait_path": "res://assets/visuals/characters/zarina/portrait_neutral.png",
+  "voice_profile": "teen_female",
+  "biography_key": "bio_zarina",
+  "traits": {
+    "expressive": 4,
+    "withdrawn": 1,
+    "protector": 2,
+    "authoritarian": 0
+  }
+}

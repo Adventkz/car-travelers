@@ -1,0 +1,24 @@
+keys,ru,en
+DAY,День,Day
+MAP,Карта,Map
+INCIDENT,Инцидент,Incident
+MANAGEMENT,Привал,Stop
+CAMP,Ночёвка,Camp
+FUEL,Топливо,Fuel
+FOOD,Еда,Food
+STRESS,Стресс,Stress
+VEHICLE,Авто,Vehicle
+START_GAME,Начать,Start
+CONTINUE_GAME,Продолжить,Continue
+SLEEP,Спать,Sleep
+TALK,Поговорить с семьёй,Talk with family
+DISTRIBUTE_FOOD,Раздать еду,Distribute food
+CONTINUE_ROUTE,Продолжить маршрут,Continue route
+REST,Ночевать,Rest
+bio_saryn,"Сарын — глава семьи. Работал прорабом. Решителен, берёт ответственность.","Saryn is the family head. Former construction foreman. Decisive, takes responsibility."
+bio_asel,"Асель — жена Сарына. Бывший педагог. Держит семью вместе в трудные моменты.","Asel is Saryn's wife. Former teacher. Keeps the family together in difficult moments."
+bio_daniyar,"Данияр — старший сын, 17 лет. Порывистый, мечтает о своей жизни.","Daniyar is the eldest son, 17. Impulsive, dreams of his own life."
+bio_zarina,"Зарина — дочь, 15 лет. Наблюдательная и эмпатичная.","Zarina is the daughter, 15. Observant and empathetic."
+bio_miras,"Мирас — сын, 12 лет. Любопытный, всегда задаёт вопросы.","Miras is the son, 12. Curious, always asking questions."
+bio_gulnara,"Гульнара — бабушка. Хранит традиции, её слово весомо.","Gulnara is the grandmother. Keeper of traditions, her word carries weight."
+bio_ruslan,"Руслан — лидер второй семьи. Молодой и рискованный.","Ruslan is the second family's leader. Young and risk-taking."

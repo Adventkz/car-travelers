@@ -1,0 +1,16 @@
+{
+  "char_id": "miras",
+  "display_name": "Мирас",
+  "age": 12,
+  "family_id": "family_a",
+  "role": "child",
+  "portrait_path": "res://assets/visuals/characters/miras/portrait_neutral.png",
+  "voice_profile": "child",
+  "biography_key": "bio_miras",
+  "traits": {
+    "playful": 5,
+    "serious": 0,
+    "trusting": 4,
+    "guarded": 0
+  }
+}

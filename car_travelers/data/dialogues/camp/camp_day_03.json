@@ -1,0 +1,52 @@
+{
+  "id": "camp_day_03",
+  "lines": [
+    {
+      "speaker": "",
+      "text": "Третья ночь. Дорога берёт своё — лица усталые, но глаза живые."
+    },
+    {
+      "speaker": "Зарина",
+      "text": "Я заметила — Данияр почти не разговаривает последние часы. Что с ним?",
+      "portrait": ""
+    },
+    {
+      "speaker": "Асель",
+      "text": "Он взрослеет. Иногда нужно просто молчать.",
+      "portrait": "res://assets/visuals/characters/asel/portrait_neutral.png",
+      "choices": [
+        {
+          "text": "«Данияр, всё нормально?»",
+          "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "saryn", "trait_id": "expressive", "delta": 1 }],
+          "jump": "daniyar_response"
+        },
+        {
+          "text": "Дать ему пространство.",
+          "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "saryn", "trait_id": "withdrawn", "delta": 1 }],
+          "jump": "night_end"
+        }
+      ]
+    },
+    {
+      "label": "daniyar_response",
+      "speaker": "Данияр",
+      "text": "(пауза) Нормально. Просто думаю.",
+      "portrait": "",
+      "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "daniyar", "trait_id": "withdrawn", "delta": 1 }]
+    },
+    {
+      "speaker": "Сарын",
+      "text": "Если захочешь поговорить — я здесь.",
+      "portrait": "res://assets/visuals/characters/saryn/portrait_neutral.png",
+      "mutations": [
+        { "fn": "TraitSystem.reinforce", "char_id": "saryn", "trait_id": "protector", "delta": 1 },
+        { "fn": "ResourceManager.modify", "type": "stress", "delta": -4 }
+      ]
+    },
+    {
+      "label": "night_end",
+      "speaker": "",
+      "text": "Ночь тихая. Семья спит. Завтра всё начнётся снова."
+    }
+  ]
+}

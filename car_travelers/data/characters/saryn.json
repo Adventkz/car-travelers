@@ -1,0 +1,20 @@
+{
+  "char_id": "saryn",
+  "display_name": "Сарын",
+  "age": 34,
+  "family_id": "family_a",
+  "role": "leader",
+  "portrait_path": "res://assets/visuals/characters/saryn/portrait_neutral.png",
+  "voice_profile": "deep_male",
+  "biography_key": "bio_saryn",
+  "traits": {
+    "authoritarian": 2,
+    "protector": 3,
+    "pragmatic": 2,
+    "idealist": 1,
+    "withdrawn": 1,
+    "expressive": 2,
+    "reckless": 1,
+    "cautious": 2
+  }
+}

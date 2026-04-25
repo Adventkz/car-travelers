@@ -1,0 +1,45 @@
+{
+  "id": "camp_day_02",
+  "lines": [
+    {
+      "speaker": "",
+      "text": "Второй день позади. Звёзды над степью — яркие, близкие."
+    },
+    {
+      "speaker": "Гульнара",
+      "text": "В моё время люди не уезжали так далеко от дома. Дом — это святое.",
+      "portrait": "",
+      "choices": [
+        {
+          "text": "«Вы правы, апа. Но так надо.»",
+          "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "gulnara", "trait_id": "traditional", "delta": 1 }],
+          "jump": "daniyar_line"
+        },
+        {
+          "text": "«Дом там, где семья вместе.»",
+          "mutations": [
+            { "fn": "TraitSystem.reinforce", "char_id": "saryn", "trait_id": "idealist", "delta": 1 },
+            { "fn": "ResourceManager.modify", "type": "stress", "delta": -5 }
+          ],
+          "jump": "daniyar_line"
+        }
+      ]
+    },
+    {
+      "label": "daniyar_line",
+      "speaker": "Данияр",
+      "text": "Апа, всё изменилось. Мы сами строим свой путь.",
+      "portrait": ""
+    },
+    {
+      "speaker": "Гульнара",
+      "text": "(тихо) Ты ещё молод, Данияр. Путь строится не за один день.",
+      "portrait": "",
+      "mutations": [{ "fn": "TraitSystem.reinforce", "char_id": "gulnara", "trait_id": "wise", "delta": 1 }]
+    },
+    {
+      "speaker": "",
+      "text": "Костёр догорает. Все расходятся спать."
+    }
+  ]
+}

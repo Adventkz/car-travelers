@@ -1,0 +1,16 @@
+{
+  "char_id": "gulnara",
+  "display_name": "Гульнара",
+  "age": 58,
+  "family_id": "family_a",
+  "role": "elder",
+  "portrait_path": "res://assets/visuals/characters/gulnara/portrait_neutral.png",
+  "voice_profile": "elder_female",
+  "biography_key": "bio_gulnara",
+  "traits": {
+    "wise": 5,
+    "stubborn": 2,
+    "traditional": 4,
+    "adaptive": 1
+  }
+}

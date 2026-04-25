@@ -1,5 +1,5 @@
 # res://scripts/ui/hud_controller.gd
-extends Control
+extends CanvasLayer
 
 @onready var fuel_bar: ProgressBar = $HUDContainer/FuelBar
 @onready var food_bar: ProgressBar = $HUDContainer/FoodBar
