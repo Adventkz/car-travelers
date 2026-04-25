@@ -10,6 +10,7 @@ var day_count: int = 1
 var parts_currency: int = 0
 var active_family: String = "family_a"
 var dialogue_flags: Dictionary = {}
+var vehicle: VehicleState = VehicleState.new()
 
 func _ready() -> void:
 	EventBus.scene_transition.connect(_on_scene_transition)

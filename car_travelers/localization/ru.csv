@@ -22,3 +22,34 @@ bio_zarina,"Зарина — дочь, 15 лет. Наблюдательная �
 bio_miras,"Мирас — сын, 12 лет. Любопытный, всегда задаёт вопросы.","Miras is the son, 12. Curious, always asking questions."
 bio_gulnara,"Гульнара — бабушка. Хранит традиции, её слово весомо.","Gulnara is the grandmother. Keeper of traditions, her word carries weight."
 bio_ruslan,"Руслан — лидер второй семьи. Молодой и рискованный.","Ruslan is the second family's leader. Young and risk-taking."
+bio_dina,"Дина — жена Руслана. Эмпатичная и заботливая.","Dina is Ruslan's wife. Empathetic and caring."
+bio_timur,"Тимур — сын Руслана, 19 лет. Идеалист, верит в лучшее.","Timur is Ruslan's son, 19. Idealist, believes in the best."
+bio_ainur,"Айнур — сын, 9 лет. Игривый и доверчивый.","Ainur is the son, 9. Playful and trusting."
+bio_bolat,"Болат — сын, 7 лет. Полный энергии и любопытства.","Bolat is the son, 7. Full of energy and curiosity."
+bio_erlan,"Ерлан — дедушка. Мудрый и традиционный.","Erlan is the grandfather. Wise and traditional."
+bio_saule,"Сауле — бабушка. Хранит семейные ценности.","Saule is the grandmother. Keeper of family values."
+bio_almaz,"Алмаз — брат Сарына. Прагматичный и осторожный.","Almaz is Saryn's brother. Pragmatic and cautious."
+bio_meruert,"Меруерт — жена Алмаза. Весёлая и общительная.","Meruert is Almaz's wife. Cheerful and sociable."
+bio_arman,"Арман — подросток, 13 лет. Любит приключения.","Arman is a teenager, 13. Loves adventures."
+bio_kamila,"Камила — дочь, 11 лет. Наблюдательная и добрая.","Kamila is the daughter, 11. Observant and kind."
+bio_darkhan,"Дархан — малыш, 5 лет. Всегда весёлый.","Darkhan is the toddler, 5. Always cheerful."
+bio_azamat,"Азамат — друг семьи. Надёжный и рассудительный.","Azamat is a family friend. Reliable and sensible."
+bio_assel,"Ассель — подруга семьи. Оптимистичная.","Assel is a family friend. Optimistic."
+bio_maksat,"Максат — подросток из второй семьи. Энергичный.","Maksat is a teenager from the second family. Energetic."
+bio_aliya,"Алия — дочь из второй семьи, 17 лет. Мечтательница.","Aliya is a daughter from the second family, 17. Dreamer."
+bio_erzhan,"Ержан — дядя из второй семьи. Опытный и строгий.","Erzhan is an uncle from the second family. Experienced and strict."
+bio_gulzhan,"Гульжан — тётя из второй семьи. Заботливая.","Gulzhan is an aunt from the second family. Caring."
+bio_nurly,"Нурлы — ребёнок из второй семьи, 8 лет. Игривый.","Nurly is a child from the second family, 8. Playful."
+bio_sanzhar,"Санжар — малыш из второй семьи, 6 лет. Любознательный.","Sanzhar is a toddler from the second family, 6. Curious."
+bio_dauren,"Даурен — взрослый из второй семьи. Рассудительный.","Dauren is an adult from the second family. Sensible."
+bio_ainura,"Айнура — подросток из второй семьи, 14 лет. Творческая.","Ainura is a teenager from the second family, 14. Creative."
+UPGRADE_COMFORT,Комфорт,Comfort
+UPGRADE_FUEL_TANK,Бак,Tank
+UPGRADE_CARGO,Груз,Cargo
+UPGRADE_ENGINE,Двигатель,Engine
+UPGRADE_REPAIR_KIT,Рем. набор,Repair Kit
+UPGRADE_SOLAR_PANEL,Солн. панель,Solar Panel
+UPGRADE_LEVEL,Уровень,Level
+UPGRADE_COST,Стоимость,Cost
+UPGRADE_BUY,Купить,Buy
+PARTS_CURRENCY,Запчасти,Parts

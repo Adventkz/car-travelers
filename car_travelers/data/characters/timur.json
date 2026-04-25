@@ -1,0 +1,18 @@
+{
+  "char_id": "timur",
+  "display_name": "Тимур",
+  "age": 19,
+  "family_id": "family_b",
+  "role": "teen",
+  "portrait_path": "res://assets/visuals/characters/timur/portrait_neutral.png",
+  "voice_profile": "teen_male",
+  "biography_key": "bio_timur",
+  "traits": {
+    "idealist": 4,
+    "pragmatic": 2,
+    "reckless": 3,
+    "cautious": 2,
+    "expressive": 3,
+    "withdrawn": 2
+  }
+}

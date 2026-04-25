@@ -1,0 +1,55 @@
+keys,en
+DAY,Day
+MAP,Map
+INCIDENT,Incident
+MANAGEMENT,Stop
+CAMP,Camp
+FUEL,Fuel
+FOOD,Food
+STRESS,Stress
+VEHICLE,Vehicle
+START_GAME,Start
+CONTINUE_GAME,Continue
+SLEEP,Sleep
+TALK,Talk with family
+DISTRIBUTE_FOOD,Distribute food
+CONTINUE_ROUTE,Continue route
+REST,Rest
+bio_saryn,"Saryn is the family head. Former construction foreman. Decisive, takes responsibility."
+bio_asel,Asel is Saryn's wife. Former teacher. Keeps the family together in difficult moments.
+bio_daniyar,"Daniyar is the eldest son, 17. Impulsive, dreams of his own life."
+bio_zarina,"Zarina is the daughter, 15. Observant and empathetic."
+bio_miras,"Miras is the son, 12. Curious, always asking questions."
+bio_gulnara,"Gulnara is the grandmother. Keeper of traditions, her word carries weight."
+bio_ruslan,Ruslan is the second family's leader. Young and risk-taking.
+bio_dina,Dina is Ruslan's wife. Empathetic and caring.
+bio_timur,"Timur is Ruslan's son, 19. Idealist, believes in the best."
+bio_ainur,"Ainur is the son, 9. Playful and trusting."
+bio_bolat,"Bolat is the son, 7. Full of energy and curiosity."
+bio_erlan,Erlan is the grandfather. Wise and traditional.
+bio_saule,Saule is the grandmother. Keeper of family values.
+bio_almaz,Almaz is Saryn's brother. Pragmatic and cautious.
+bio_meruert,Meruert is Almaz's wife. Cheerful and sociable.
+bio_arman,"Arman is a teenager, 13. Loves adventures."
+bio_kamila,"Kamila is the daughter, 11. Observant and kind."
+bio_darkhan,"Darkhan is the toddler, 5. Always cheerful."
+bio_azamat,Azamat is a family friend. Reliable and sensible.
+bio_assel,Assel is a family friend. Optimistic.
+bio_maksat,Maksat is a teenager from the second family. Energetic.
+bio_aliya,"Aliya is a daughter from the second family, 17. Dreamer."
+bio_erzhan,Erzhan is an uncle from the second family. Experienced and strict.
+bio_gulzhan,Gulzhan is an aunt from the second family. Caring.
+bio_nurly,"Nurly is a child from the second family, 8. Playful."
+bio_sanzhar,"Sanzhar is a toddler from the second family, 6. Curious."
+bio_dauren,Dauren is an adult from the second family. Sensible.
+bio_ainura,"Ainura is a teenager from the second family, 14. Creative."
+UPGRADE_COMFORT,Comfort
+UPGRADE_FUEL_TANK,Tank
+UPGRADE_CARGO,Cargo
+UPGRADE_ENGINE,Engine
+UPGRADE_REPAIR_KIT,Repair Kit
+UPGRADE_SOLAR_PANEL,Solar Panel
+UPGRADE_LEVEL,Level
+UPGRADE_COST,Cost
+UPGRADE_BUY,Buy
+PARTS_CURRENCY,Parts

@@ -1,0 +1,18 @@
+{
+  "char_id": "sanzhar",
+  "display_name": "Санжар",
+  "age": 6,
+  "family_id": "family_b",
+  "role": "child",
+  "portrait_path": "res://assets/visuals/characters/sanzhar/portrait_neutral.png",
+  "voice_profile": "child",
+  "biography_key": "bio_sanzhar",
+  "traits": {
+    "playful": 6,
+    "serious": 0,
+    "trusting": 5,
+    "guarded": 0,
+    "expressive": 5,
+    "withdrawn": 0
+  }
+}

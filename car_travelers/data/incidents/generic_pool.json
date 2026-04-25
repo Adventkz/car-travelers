@@ -39,6 +39,226 @@
           "outcome": "Нет места. Едем дальше."
         }
       ]
+    },
+    {
+      "id": "incident_market_01",
+      "title": "Рынок на обочине",
+      "description": "Местные продают фрукты и воду по дешёвке.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Купить еды",
+          "cost": { "parts_currency": -10 },
+          "trait_signal": { "character": "asel", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Запасы пополнены. +15 еды."
+        },
+        {
+          "text": "Не останавливаться",
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "cautious", "delta": 1 },
+          "outcome": "Могли обмануть. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_bridge_01",
+      "title": "Старый мост",
+      "description": "Мост через реку выглядит ветхим. Есть объезд.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Рискнуть и проехать",
+          "cost": { "stress": 15 },
+          "trait_signal": { "character": "daniyar", "trait": "reckless", "delta": 1 },
+          "outcome": "Мост выдержал. Сэкономили 2 часа."
+        },
+        {
+          "text": "Объехать",
+          "cost": { "fuel": -10 },
+          "trait_signal": { "character": "asel", "trait": "cautious", "delta": 1 },
+          "outcome": "Дорога длиннее, но безопаснее."
+        }
+      ]
+    },
+    {
+      "id": "incident_mechanic_01",
+      "title": "Механик в гараже",
+      "description": "На обочине стоит мастерская. Механик предлагает ремонт.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Отремонтировать авто",
+          "cost": { "parts_currency": -15 },
+          "trait_signal": { "character": "almaz", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Механик починил. +20 HP авто."
+        },
+        {
+          "text": "Отказаться",
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "cautious", "delta": 1 },
+          "outcome": "Слишком дорого. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_family_quarrel_01",
+      "title": "Ссора в машине",
+      "description": "Данияр и Зарина спорят о музыке. Напряжение растёт.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Вмешаться",
+          "cost": { "stress": -5 },
+          "trait_signal": { "character": "saryn", "trait": "protector", "delta": 1 },
+          "outcome": "Разделил их. Мир восстановлен."
+        },
+        {
+          "text": "Оставить как есть",
+          "cost": { "stress": 10 },
+          "trait_signal": { "character": "saryn", "trait": "withdrawn", "delta": 1 },
+          "outcome": "Они продолжили спор. Все напряжены."
+        }
+      ]
+    },
+    {
+      "id": "incident_hot_spring_01",
+      "title": "Горячий источник",
+      "description": "Рядом с дорогой есть природный горячий источник.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Остановиться на отдых",
+          "cost": { "stress": -15, "fuel": -5 },
+          "trait_signal": { "character": "asel", "trait": "expressive", "delta": 1 },
+          "outcome": "Семья отдохнула. Настроение отличное."
+        },
+        {
+          "text": "Продолжить путь",
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Времени мало. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_police_01",
+      "title": "Пост ДПС",
+      "description": "Впереди пост полиции. Офицер машет рукой.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Остановиться",
+          "cost": { "stress": 5 },
+          "trait_signal": { "character": "saryn", "trait": "cautious", "delta": 1 },
+          "outcome": "Проверили документы. Всё в порядке."
+        },
+        {
+          "text": "Попытаться объехать",
+          "cost": { "stress": 15, "fuel": -8 },
+          "trait_signal": { "character": "daniyar", "trait": "reckless", "delta": 1 },
+          "outcome": "Успели. Но нервы на пределе."
+        }
+      ]
+    },
+    {
+      "id": "incident_abandoned_car_01",
+      "title": "Брошенная машина",
+      "description": "На обочине стоит старая машина. Может, есть что полезное.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Обыскать",
+          "cost": { "stress": 5 },
+          "trait_signal": { "character": "almaz", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Нашли канистру с топливом. +15 топлива."
+        },
+        {
+          "text": "Игнорировать",
+          "cost": {},
+          "trait_signal": { "character": "asel", "trait": "cautious", "delta": 1 },
+          "outcome": "Опасно. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_sick_child_01",
+      "title": "Ребёнок заболел",
+      "description": "Мирас жалуется на боль в животе.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Остановиться и помочь",
+          "cost": { "fuel": -5, "stress": -5 },
+          "trait_signal": { "character": "asel", "trait": "protector", "delta": 1 },
+          "outcome": "Отдох помог. Мирасу лучше."
+        },
+        {
+          "text": "Дать лекарство и ехать",
+          "cost": { "food": -2 },
+          "trait_signal": { "character": "saryn", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Лекарство помогло, но Мирас грустит."
+        }
+      ]
+    },
+    {
+      "id": "incident_friendly_village_01",
+      "title": "Дружелюбное село",
+      "description": "Жители села предлагают ночлег и еду.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Остаться на ночь",
+          "cost": { "stress": -20 },
+          "trait_signal": { "character": "gulnara", "trait": "trusting", "delta": 1 },
+          "outcome": "Тёплый приём. Отличный отдых."
+        },
+        {
+          "text": "Поблагодарить и ехать",
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "cautious", "delta": 1 },
+          "outcome": "Не знаем этих людей. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_car_trouble_01",
+      "title": "Странный звук",
+      "description": "Машина издаёт непонятный звук из-под капота.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Проверить самим",
+          "cost": { "stress": 10 },
+          "trait_signal": { "character": "almaz", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Ничего серьёзного. Просто мелочь."
+        },
+        {
+          "text": "Игнорировать",
+          "cost": { "vehicle_hp": -5 },
+          "trait_signal": { "character": "saryn", "trait": "reckless", "delta": 1 },
+          "outcome": "Через 10 км заглохли. Пришлось чинить."
+        }
+      ]
+    },
+    {
+      "id": "incident_scenic_view_01",
+      "title": "Красивый вид",
+      "description": "С открывается потрясающий вид на горы.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Сделать остановку",
+          "cost": { "stress": -10 },
+          "trait_signal": { "character": "asel", "trait": "expressive", "delta": 1 },
+          "outcome": "Сделали фото. Воспоминания на всю жизнь."
+        },
+        {
+          "text": "Проехать",
+          "cost": {},
+          "trait_signal": { "character": "saryn", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Красиво, но времени нет."
+        }
+      ]
     }
   ]
 }

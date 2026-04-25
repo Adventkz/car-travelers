@@ -1,0 +1,18 @@
+{
+  "char_id": "dauren",
+  "display_name": "Даурен",
+  "age": 38,
+  "family_id": "family_b",
+  "role": "adult",
+  "portrait_path": "res://assets/visuals/characters/dauren/portrait_neutral.png",
+  "voice_profile": "adult_male",
+  "biography_key": "bio_dauren",
+  "traits": {
+    "pragmatic": 4,
+    "idealist": 2,
+    "cautious": 4,
+    "reckless": 1,
+    "withdrawn": 3,
+    "expressive": 2
+  }
+}

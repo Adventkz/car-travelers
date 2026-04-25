@@ -1,0 +1,264 @@
+{
+  "incidents": [
+    {
+      "id": "incident_river_crossing_01",
+      "title": "Переправа через реку",
+      "description": "Река разлилась после дождя. Моста нет.",
+      "trigger": "route_node",
+      "choices": [
+        {
+          "text": "Искать брод",
+          "cost": { "stress": 10, "fuel": -5 },
+          "trait_signal": { "character": "ruslan", "trait": "cautious", "delta": 1 },
+          "outcome": "Нашли безопасное место. Переправились."
+        },
+        {
+          "text": "Попытаться проехать вброд",
+          "cost": { "vehicle_hp": -15, "stress": 20 },
+          "trait_signal": { "character": "ruslan", "trait": "reckless", "delta": 1 },
+          "outcome": "Машина застряла. Пришлось толкать."
+        }
+      ]
+    },
+    {
+      "id": "incident_bandits_01",
+      "title": "Подозрительные люди",
+      "description": "На дороге группа людей ведёт себя агрессивно.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Развернуться и уехать",
+          "cost": { "fuel": -15 },
+          "trait_signal": { "character": "ruslan", "trait": "cautious", "delta": 1 },
+          "outcome": "Безопаснее, но потеряли время."
+        },
+        {
+          "text": "Попытаться проехать",
+          "cost": { "stress": 25 },
+          "trait_signal": { "character": "ruslan", "trait": "reckless", "delta": 1 },
+          "outcome": "Проехали быстро. Все напуганы."
+        }
+      ]
+    },
+    {
+      "id": "incident_wild_horses_01",
+      "title": "Дикие лошади",
+      "description": "Стадо диких лошадей перегородило дорогу.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Ждать пока уйдут",
+          "cost": { "stress": 5 },
+          "trait_signal": { "character": "dina", "trait": "cautious", "delta": 1 },
+          "outcome": "Лошади ушли через 20 минут."
+        },
+        {
+          "text": "Попытаться обогнать",
+          "cost": { "stress": 15 },
+          "trait_signal": { "character": "timur", "trait": "reckless", "delta": 1 },
+          "outcome": "Лошади разбежались. Быстро, но опасно."
+        }
+      ]
+    },
+    {
+      "id": "incident_ruins_01",
+      "title": "Древние руины",
+      "description": "Рядом с дорогой видны руины старого города.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Исследовать",
+          "cost": { "stress": -10, "fuel": -5 },
+          "trait_signal": { "character": "aliya", "trait": "idealist", "delta": 1 },
+          "outcome": "Нашли интересный артефакт. +5 parts."
+        },
+        {
+          "text": "Проехать",
+          "cost": {},
+          "trait_signal": { "character": "ruslan", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Времени мало. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_storm_01",
+      "title": "Гроза",
+      "description": "Небо потемнело. Начинается гроза.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Найти укрытие",
+          "cost": { "stress": -5 },
+          "trait_signal": { "character": "dina", "trait": "cautious", "delta": 1 },
+          "outcome": "Переждали под мостом. Все сухие."
+        },
+        {
+          "text": "Ехать дальше",
+          "cost": { "vehicle_hp": -10, "stress": 15 },
+          "trait_signal": { "character": "ruslan", "trait": "reckless", "delta": 1 },
+          "outcome": "Дорога скользкая. Машина занесло."
+        }
+      ]
+    },
+    {
+      "id": "incident_hermit_01",
+      "title": "Отшельник",
+      "description": "В пещере живёт старик. Предлагает чай и советы.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Поговорить",
+          "cost": { "stress": -15 },
+          "trait_signal": { "character": "erzhan", "trait": "trusting", "delta": 1 },
+          "outcome": "Старик рассказал о коротком пути. -15 км."
+        },
+        {
+          "text": "Вежливо отказаться",
+          "cost": {},
+          "trait_signal": { "character": "ruslan", "trait": "cautious", "delta": 1 },
+          "outcome": "Не знаем его. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_flat_tire_02",
+      "title": "Второе проколото колесо",
+      "description": "Опять прокол! Запаски нет.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Чинить на месте",
+          "cost": { "stress": 20, "vehicle_hp": -5 },
+          "trait_signal": { "character": "dauren", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Починили, но потеряли 3 часа."
+        },
+        {
+          "text": "Толкать до ближайшей мастерской",
+          "cost": { "stress": 30, "fuel": -10 },
+          "trait_signal": { "character": "ruslan", "trait": "reckless", "delta": 1 },
+          "outcome": "Очень тяжело. Все измотаны."
+        }
+      ]
+    },
+    {
+      "id": "incident_nomad_camp_01",
+      "title": "Кочевники",
+      "description": "Встретили лагерь кочевников. Они приглашают на чай.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Принять приглашение",
+          "cost": { "stress": -20 },
+          "trait_signal": { "character": "gulzhan", "trait": "trusting", "delta": 1 },
+          "outcome": "Тёплый приём. Узнали о дорогах."
+        },
+        {
+          "text": "Отказаться",
+          "cost": {},
+          "trait_signal": { "character": "ruslan", "trait": "cautious", "delta": 1 },
+          "outcome": "Нужно ехать. Времени мало."
+        }
+      ]
+    },
+    {
+      "id": "incident_oasis_01",
+      "title": "Оазис",
+      "description": "Среди пустыни нашли небольшой оазис с водой.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Остановиться",
+          "cost": { "stress": -15, "food": 10 },
+          "trait_signal": { "character": "dina", "trait": "expressive", "delta": 1 },
+          "outcome": "Отличный отдых. Запасы пополнены."
+        },
+        {
+          "text": "Продолжить",
+          "cost": {},
+          "trait_signal": { "character": "ruslan", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Времени мало. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_checkpoint_02",
+      "title": "Военный КПП",
+      "description": "Военный контрольно-пропускной пункт.",
+      "trigger": "route_node",
+      "choices": [
+        {
+          "text": "Предъявить документы",
+          "cost": { "stress": 10 },
+          "trait_signal": { "character": "ruslan", "trait": "cautious", "delta": 1 },
+          "outcome": "Проверили. Пропустили."
+        },
+        {
+          "text": "Попытаться объехать",
+          "cost": { "fuel": -20, "stress": 20 },
+          "trait_signal": { "character": "timur", "trait": "reckless", "delta": 1 },
+          "outcome": "Нашли обходной путь. Очень длинный."
+        }
+      ]
+    },
+    {
+      "id": "incident_falling_rocks_01",
+      "title": "Камнепад",
+      "description": "С горы падают камни. Опасно!",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Ждать пока прекратится",
+          "cost": { "stress": 10 },
+          "trait_signal": { "character": "dina", "trait": "cautious", "delta": 1 },
+          "outcome": "Ждали час. Камнепад прекратился."
+        },
+        {
+          "text": "Прорываться",
+          "cost": { "vehicle_hp": -20, "stress": 25 },
+          "trait_signal": { "character": "ruslan", "trait": "reckless", "delta": 1 },
+          "outcome": "Машина повреждена, но проехали."
+        }
+      ]
+    },
+    {
+      "id": "incident_lost_child_01",
+      "title": "Потерявшийся ребёнок",
+      "description": "На дороге плачет маленький ребёнок. Один.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Помочь найти родителей",
+          "cost": { "fuel": -10, "stress": -5 },
+          "trait_signal": { "character": "gulzhan", "trait": "protector", "delta": 1 },
+          "outcome": "Родители нашли. Наградили едой. +10 food."
+        },
+        {
+          "text": "Оставить",
+          "cost": { "stress": 15 },
+          "trait_signal": { "character": "ruslan", "trait": "pragmatic", "delta": 1 },
+          "outcome": "Не наше дело. Едем дальше."
+        }
+      ]
+    },
+    {
+      "id": "incident_sandstorm_01",
+      "title": "Песчаная буря",
+      "description": "Видимость почти нулевая. Песок летит со всех сторон.",
+      "trigger": "random",
+      "choices": [
+        {
+          "text": "Остановиться",
+          "cost": { "stress": 10 },
+          "trait_signal": { "character": "dina", "trait": "cautious", "delta": 1 },
+          "outcome": "Ждали 2 часа. Буря прошла."
+        },
+        {
+          "text": "Ехать на ощупь",
+          "cost": { "vehicle_hp": -15, "stress": 30 },
+          "trait_signal": { "character": "ruslan", "trait": "reckless", "delta": 1 },
+          "outcome": "Машина поцарапана. Очень опасно."
+        }
+      ]
+    }
+  ]
+}

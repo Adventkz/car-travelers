@@ -1,0 +1,18 @@
+{
+  "char_id": "gulzhan",
+  "display_name": "Гульжан",
+  "age": 43,
+  "family_id": "family_b",
+  "role": "adult",
+  "portrait_path": "res://assets/visuals/characters/gulzhan/portrait_neutral.png",
+  "voice_profile": "adult_female",
+  "biography_key": "bio_gulzhan",
+  "traits": {
+    "protector": 4,
+    "authoritarian": 2,
+    "expressive": 3,
+    "withdrawn": 2,
+    "cautious": 3,
+    "reckless": 2
+  }
+}

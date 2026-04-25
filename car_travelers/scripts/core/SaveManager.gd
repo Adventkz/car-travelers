@@ -47,8 +47,10 @@ func load_game() -> void:
 	GameState.dialogue_flags = data.get("dialogue_flags", {})
 
 	var res: Dictionary = data.get("resources", {})
-	for key in res:
-		ResourceManager.set(key, int(res[key]))
+	ResourceManager.fuel = res.get("fuel", ResourceManager.MAX_FUEL)
+	ResourceManager.food = res.get("food", ResourceManager.MAX_FOOD)
+	ResourceManager.stress = res.get("stress", 0)
+	ResourceManager.vehicle_hp = res.get("vehicle_hp", ResourceManager.MAX_VEHICLE_HP)
 
 	TraitSystem.deserialize(data.get("traits", {}))
 

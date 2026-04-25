@@ -43,6 +43,10 @@ func _show_line() -> void:
 	name_label.text = speaker
 	text_label.text = text
 
+	# Если портрет не указан явно, пробуем загрузить по имени говорящего
+	if portrait_path.is_empty() and not speaker.is_empty():
+		portrait_path = _get_portrait_path(speaker)
+
 	if portrait_path != "" and ResourceLoader.exists(portrait_path):
 		portrait.texture = load(portrait_path)
 	else:
@@ -116,6 +120,11 @@ func _apply_mutation(m: Dictionary) -> void:
 			ResourceManager.modify(m.get("type", ""), int(m.get("delta", 0)))
 		"GameState.set_flag":
 			GameState.set_flag(m.get("key", ""), bool(m.get("value", true)))
+
+func _get_portrait_path(speaker: String) -> String:
+	# Преобразуем имя в lowercase и убираем пробелы
+	var char_id := speaker.to_lower().replace(" ", "_")
+	return "res://assets/visuals/characters/" + char_id + "/portrait_neutral.png"
 
 func _clear_choices() -> void:
 	for child in choices_container.get_children():

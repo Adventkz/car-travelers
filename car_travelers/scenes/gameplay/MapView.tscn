@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://mapview"]
+[gd_scene load_steps=3 format=3 uid="uid://mapview"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/map_view.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://map_bg" path="res://assets/visuals/backgrounds/map.png" id="2"]
 
 [node name="MapView" type="Node2D"]
 script = ExtResource("1")
@@ -11,12 +12,16 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_right = 1280.0
 offset_bottom = 720.0
-color = Color(0.08, 0.1, 0.18, 1)
 z_index = -1
+expand_mode = 1
+texture = ExtResource("2")
 
 [node name="NodesContainer" type="Node2D" parent="."]
 

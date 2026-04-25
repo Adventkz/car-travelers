@@ -29,9 +29,11 @@ EventBus="*res://scripts/autoloads/EventBus.gd"
 PlatformManager="*res://scripts/autoloads/PlatformManager.gd"
 SaveManager="*res://scripts/core/SaveManager.gd"
 CharacterRegistry="*res://scripts/autoloads/CharacterRegistry.gd"
+VehicleUpgradeController="*res://scripts/gameplay/vehicle_upgrade_controller.gd"
+AudioManager="*res://scripts/autoloads/AudioManager.gd"
 HUD="*res://scenes/ui/HUD.tscn"
 DialogueView="*res://scenes/dialogue/DialogueView.tscn"
-DialogueManager="*uid://c3rodes2l3gxb"
+DialogueManager="uid://c3rodes2l3gxb"
 
 [display]
 
@@ -46,7 +48,6 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localization/ru.csv")
 locale/translations_pot_files=PackedStringArray("res://data/dialogues/camp/camp_day_01.dialogue", "res://data/dialogues/events/incident_blockade_dialogue.dialogue")
 locale/fallback="ru"
 locale/locale_filter_mode=1

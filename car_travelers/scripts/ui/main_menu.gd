@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_start() -> void:
 	SaveManager.reset()
-	EventBus.scene_transition.emit("res://scenes/gameplay/MapView.tscn")
+	EventBus.scene_transition.emit("res://scenes/ui/CharacterSelect.tscn")
 
 func _on_continue() -> void:
 	SaveManager.load_game()

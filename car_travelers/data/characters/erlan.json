@@ -1,0 +1,18 @@
+{
+  "char_id": "erlan",
+  "display_name": "Ерлан",
+  "age": 62,
+  "family_id": "family_a",
+  "role": "elder",
+  "portrait_path": "res://assets/visuals/characters/erlan/portrait_neutral.png",
+  "voice_profile": "elder_male",
+  "biography_key": "bio_erlan",
+  "traits": {
+    "wise": 5,
+    "stubborn": 3,
+    "traditional": 4,
+    "adaptive": 2,
+    "cautious": 4,
+    "reckless": 1
+  }
+}

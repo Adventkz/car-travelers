@@ -1,0 +1,18 @@
+{
+  "char_id": "kamila",
+  "display_name": "Камила",
+  "age": 11,
+  "family_id": "family_a",
+  "role": "child",
+  "portrait_path": "res://assets/visuals/characters/kamila/portrait_neutral.png",
+  "voice_profile": "child",
+  "biography_key": "bio_kamila",
+  "traits": {
+    "playful": 3,
+    "serious": 2,
+    "trusting": 4,
+    "guarded": 1,
+    "expressive": 3,
+    "withdrawn": 2
+  }
+}

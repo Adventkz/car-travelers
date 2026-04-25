@@ -1,0 +1,18 @@
+{
+  "char_id": "maksat",
+  "display_name": "Максат",
+  "age": 22,
+  "family_id": "family_b",
+  "role": "teen",
+  "portrait_path": "res://assets/visuals/characters/maksat/portrait_neutral.png",
+  "voice_profile": "teen_male",
+  "biography_key": "bio_maksat",
+  "traits": {
+    "reckless": 4,
+    "cautious": 1,
+    "expressive": 4,
+    "withdrawn": 1,
+    "playful": 3,
+    "serious": 2
+  }
+}

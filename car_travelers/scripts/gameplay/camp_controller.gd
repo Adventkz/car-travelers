@@ -35,5 +35,5 @@ func _get_dialogue_view() -> Node:
 	# DialogueView подключён как autoload или дочерняя сцена
 	if Engine.has_singleton("DialogueView"):
 		return Engine.get_singleton("DialogueView")
-	var root := Engine.get_main_loop().root
+	var root: Node = get_tree().root
 	return root.find_child("DialogueView", true, false)

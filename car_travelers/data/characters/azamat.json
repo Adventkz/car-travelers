@@ -1,0 +1,18 @@
+{
+  "char_id": "azamat",
+  "display_name": "Азамат",
+  "age": 35,
+  "family_id": "family_b",
+  "role": "adult",
+  "portrait_path": "res://assets/visuals/characters/azamat/portrait_neutral.png",
+  "voice_profile": "adult_male",
+  "biography_key": "bio_azamat",
+  "traits": {
+    "pragmatic": 3,
+    "idealist": 3,
+    "cautious": 3,
+    "reckless": 2,
+    "withdrawn": 2,
+    "expressive": 3
+  }
+}

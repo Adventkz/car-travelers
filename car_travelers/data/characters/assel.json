@@ -1,0 +1,18 @@
+{
+  "char_id": "assel",
+  "display_name": "Ассель",
+  "age": 30,
+  "family_id": "family_b",
+  "role": "adult",
+  "portrait_path": "res://assets/visuals/characters/assel/portrait_neutral.png",
+  "voice_profile": "adult_female",
+  "biography_key": "bio_assel",
+  "traits": {
+    "expressive": 3,
+    "withdrawn": 2,
+    "pragmatic": 3,
+    "idealist": 2,
+    "cautious": 3,
+    "reckless": 2
+  }
+}

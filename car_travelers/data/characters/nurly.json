@@ -1,0 +1,18 @@
+{
+  "char_id": "nurly",
+  "display_name": "Нурлы",
+  "age": 8,
+  "family_id": "family_b",
+  "role": "child",
+  "portrait_path": "res://assets/visuals/characters/nurly/portrait_neutral.png",
+  "voice_profile": "child",
+  "biography_key": "bio_nurly",
+  "traits": {
+    "playful": 5,
+    "serious": 1,
+    "trusting": 4,
+    "guarded": 1,
+    "expressive": 4,
+    "withdrawn": 1
+  }
+}

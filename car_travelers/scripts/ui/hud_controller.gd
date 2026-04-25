@@ -12,10 +12,22 @@ extends CanvasLayer
 @onready var day_label: Label = $HUDContainer/DayLabel
 @onready var phase_label: Label = $HUDContainer/PhaseLabel
 
+# Опциональные узлы (если не существуют, игнорируем)
+var parts_label: Label
+var menu_button: Button
+
 func _ready() -> void:
+	# Пытаемся найти опциональные узлы
+	parts_label = $HUDContainer.get_node_or_null("PartsLabel")
+	menu_button = $HUDContainer.get_node_or_null("MenuButton")
+	
 	EventBus.resource_changed.connect(_on_resource_changed)
 	EventBus.day_ended.connect(_on_day_ended)
 	EventBus.phase_changed.connect(_on_phase_changed)
+	
+	if menu_button:
+		menu_button.pressed.connect(_on_menu_button)
+	
 	_refresh_all()
 
 func _refresh_all() -> void:
@@ -24,9 +36,14 @@ func _refresh_all() -> void:
 	_set_bar("stress", ResourceManager.stress)
 	_set_bar("vehicle_hp", ResourceManager.vehicle_hp)
 	day_label.text = tr("DAY") + " %d" % GameState.day_count
+	
+	if parts_label:
+		parts_label.text = tr("PARTS_CURRENCY") + ": " + str(GameState.parts_currency)
 
 func _on_resource_changed(type: String, value: int) -> void:
 	_set_bar(type, value)
+	if type == "parts_currency" and parts_label:
+		parts_label.text = tr("PARTS_CURRENCY") + ": " + str(value)
 
 func _set_bar(type: String, value: int) -> void:
 	match type:
@@ -49,3 +66,6 @@ func _on_day_ended(_day: int) -> void:
 func _on_phase_changed(phase: int) -> void:
 	var names := ["MAP", "INCIDENT", "MANAGEMENT", "CAMP"]
 	phase_label.text = tr(names[phase]) if phase < names.size() else ""
+
+func _on_menu_button() -> void:
+	EventBus.scene_transition.emit("res://scenes/ui/MainMenu.tscn")

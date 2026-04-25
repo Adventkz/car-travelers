@@ -1,0 +1,18 @@
+{
+  "char_id": "almaz",
+  "display_name": "Алмаз",
+  "age": 28,
+  "family_id": "family_a",
+  "role": "adult",
+  "portrait_path": "res://assets/visuals/characters/almaz/portrait_neutral.png",
+  "voice_profile": "adult_male",
+  "biography_key": "bio_almaz",
+  "traits": {
+    "pragmatic": 4,
+    "idealist": 2,
+    "cautious": 3,
+    "reckless": 2,
+    "withdrawn": 3,
+    "expressive": 2
+  }
+}
