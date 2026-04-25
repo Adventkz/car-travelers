@@ -1,0 +1,31 @@
+# Godot
+.godot/
+*.import
+export.cfg
+export_presets.cfg
+
+# Godot mono specific
+.mono/
+data_*/
+mono_crash.md
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+eject
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build output
+builds/
+
+# User saves (не коммитить)
+user://
