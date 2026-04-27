@@ -14,6 +14,7 @@ signal incident_resolved(id: String, choice: int)
 
 # --- Диалоги ---
 signal dialogue_ended(id: String)
+signal start_direction_selected(direction: String)
 
 # --- Сцены ---
 signal scene_transition(target: String)

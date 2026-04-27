@@ -67,16 +67,17 @@ func _check_critical(resource_type: String) -> void:
 		EventBus.resource_critical.emit(resource_type)
 
 func calculate_fuel_cost(distance_km: float, terrain: String) -> int:
-	var terrain_mod: int = 0
+	# Казуальный режим: фиксированный расход 1-5 топлива независимо от расстояния
+	var base_cost := randi_range(1, 5)
+	
+	# Небольшая модификация по типу местности
 	match terrain:
-		"asphalt": terrain_mod = 0
-		"dirt":    terrain_mod = 5
-		"mountain":terrain_mod = 12
-		"sand":    terrain_mod = 8
-	var vehicle_penalty: float = 0.0
-	if vehicle_hp < 50:
-		vehicle_penalty = (50.0 - vehicle_hp) * 0.1
-	return int(distance_km * 0.8 + terrain_mod + vehicle_penalty)
+		"asphalt": base_cost = max(1, base_cost)  # 1-5
+		"dirt":    base_cost = max(2, base_cost)  # 2-5
+		"mountain":base_cost = max(3, base_cost)  # 3-5
+		"sand":    base_cost = max(2, base_cost)  # 2-5
+	
+	return base_cost
 
 func calculate_stress_delta() -> int:
 	var base := 3

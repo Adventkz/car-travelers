@@ -59,6 +59,7 @@ func show_dialogue(dialogue_id: String, lines: Array) -> void:
 func _show_line() -> void:
 	if _current_line >= _lines.size():
 		dialogue_finished.emit(_dialogue_id)
+		hide()
 		return
 	
 	var line: Dictionary = _lines[_current_line]
@@ -193,6 +194,14 @@ func _on_choice(idx: int, choice: Dictionary) -> void:
 		return
 	elif jump == "camp":
 		GameState.set_flag("go_to_camp", true)
+		dialogue_finished.emit(_dialogue_id)
+		hide()
+		return
+	
+	# Специальное действие для стартовой локации - выбор направления
+	if _dialogue_id == "start_location" and jump != "" and jump != "end":
+		# Сохраняем выбранное направление через EventBus для map_view
+		EventBus.emit_signal("start_direction_selected", jump)
 		dialogue_finished.emit(_dialogue_id)
 		hide()
 		return

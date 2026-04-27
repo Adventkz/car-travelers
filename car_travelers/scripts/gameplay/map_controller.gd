@@ -31,27 +31,27 @@ func select_node(node_id: String) -> void:
 	push_warning("map_controller: node not found: %s" % node_id)
 
 func _travel_to_node(node: Dictionary) -> void:
-	var fuel_cost := ResourceManager.calculate_fuel_cost(
-		float(node.get("distance_km", 0)),
-		node.get("terrain", "asphalt")
-	)
+	var distance_km: float = float(node.get("distance_km", 0))
+	var terrain: String = node.get("terrain", "asphalt")
+	var fuel_cost: int = ResourceManager.calculate_fuel_cost(distance_km, terrain)
+	
+	# Если расстояние 0 (стартовый узел), не тратим ресурсы
+	if distance_km == 0:
+		print("Остаемся на месте: %s" % node.get("display_name", ""))
+		return
 	
 	# Проверяем, есть ли топливо
 	if ResourceManager.fuel < fuel_cost:
-		# Шанс найти топливо на маршруте
-		var find_fuel_chance := randf()
-		if find_fuel_chance < 0.3:  # 30% шанс найти топливо
-			var found_fuel := randi_range(5, 15)
-			ResourceManager.modify("fuel", found_fuel, "Найдено на маршруте")
-			print("Найдено топливо: %d" % found_fuel)
-		else:
-			_show_game_over("Топливо закончилось! Семья застряла в пустыне.")
-			return
+		# Казуальный режим: всегда находим топливо если не хватает
+		var found_fuel := randi_range(10, 25)
+		ResourceManager.modify("fuel", found_fuel, "Найдено на заправке")
+		ResourceManager.modify("stress", 5, "Задержка в пути")
+		print("Найдено топливо: %d (казуальный режим)" % found_fuel)
 	
 	ResourceManager.modify("fuel", -fuel_cost, "Путешествие")
 	ResourceManager.modify("stress", ResourceManager.calculate_stress_delta(), "Путешествие")
 	
-	# Случайные поломки авто на маршруте
+	# Случайные поломки авто на маршруте (казуальный режим)
 	_apply_vehicle_damage(node)
 
 	# После каждой поездки обязательно ночёвка в лагере
@@ -66,20 +66,25 @@ func _apply_vehicle_damage(node: Dictionary) -> void:
 	var terrain: String = node.get("terrain", "asphalt")
 	var distance: float = float(node.get("distance_km", 0))
 	
-	# Шанс поломки зависит от типа местности и расстояния
+	# Казуальный режим: значительно снижен шанс поломки
 	var breakdown_chance := 0.0
 	match terrain:
-		"asphalt": breakdown_chance = 0.05  # 5% на асфальте
-		"dirt": breakdown_chance = 0.15     # 15% на грунте
-		"sand": breakdown_chance = 0.25     # 25% на песке
-		"mountain": breakdown_chance = 0.35 # 35% в горах
-		_: breakdown_chance = 0.1
+		"asphalt": breakdown_chance = 0.01  # 1% на асфальте
+		"dirt": breakdown_chance = 0.03     # 3% на грунте
+		"sand": breakdown_chance = 0.05     # 5% на песке
+		"mountain": breakdown_chance = 0.08 # 8% в горах
+		_: breakdown_chance = 0.02
 	
-	# Увеличиваем шанс с расстоянием
-	breakdown_chance += distance * 0.01
+	# Минимальный шанс с расстояния (очень маленький)
+	breakdown_chance += distance * 0.001
 	
 	var roll := randf()
 	if roll < breakdown_chance:
-		var damage := int(randi_range(10, 30))
+		var damage := int(randi_range(5, 15))  # Меньший урон
 		ResourceManager.modify("vehicle_hp", -damage)
 		print("Авто получило урон: %d HP (местность: %s)" % [damage, terrain])
+		
+		# Если HP упало до 0, восстанавливаем до минимума вместо Game Over
+		if ResourceManager.vehicle_hp <= 0:
+			ResourceManager.vehicle_hp = 10
+			print("Авто критически повреждено, но можно двигаться (казуальный режим)")

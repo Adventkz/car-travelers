@@ -2,7 +2,7 @@
 extends Control
 
 @onready var title_label: Label = $VBoxContainer/Title
-@onready var log_list: VBoxContainer = $VBoxContainer/ScrollContainer/LogList
+@onready var log_list: VBoxContainer = $VBoxContainer/TabContainer/ResourcesTab/ScrollContainer/LogList
 @onready var back_button: Button = $VBoxContainer/BackButton
 @onready var clear_button: Button = $VBoxContainer/ClearButton
 @onready var tab_container: TabContainer = $VBoxContainer/TabContainer

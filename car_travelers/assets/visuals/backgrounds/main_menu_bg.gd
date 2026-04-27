@@ -13,8 +13,9 @@ const GRADIENT_BOTTOM := Color(0.08, 0.13, 0.22, 1.0)  # #16213E
 const PARTICLE_COLORS := [Color(0.91, 0.27, 0.38, 0.3), Color(0.31, 0.8, 0.77, 0.25), Color(0.96, 0.65, 0.14, 0.2)]
 
 func _ready() -> void:
-	_init_particles()
-	_init_stars()
+	# Откладываем инициализацию до следующего кадра, когда size будет установлен
+	call_deferred("_init_particles")
+	call_deferred("_init_stars")
 
 func _process(delta: float) -> void:
 	time += delta

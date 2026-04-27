@@ -1,66 +1,74 @@
 # res://scripts/ui/main_menu.gd
 extends Control
 
-@onready var start_button: Button = $VBoxContainer/StartButton
-@onready var continue_button: Button = $VBoxContainer/ContinueButton
-@onready var history_button: Button = $VBoxContainer/HistoryButton
-@onready var title_label: Label = $VBoxContainer/Title
+var settings_menu
+var start_button
+var continue_button
+var history_button
+var settings_button
+var exit_button
+var characters_container
 
-const HOVER_SCALE := Vector2(1.05, 1.05)
-const NORMAL_SCALE := Vector2(1.0, 1.0)
-const ANIMATION_DURATION := 0.2
-
-func _ready() -> void:
-	start_button.pressed.connect(_on_start)
-	continue_button.pressed.connect(_on_continue)
-	history_button.pressed.connect(_on_history)
-	continue_button.disabled = not SaveManager.save_exists()
+func _ready():
+	# Получаем узлы
+	settings_menu = preload("res://scenes/ui/SettingsMenu.tscn").instantiate()
+	characters_container = get_node_or_null("Characters")
+	start_button = get_node_or_null("CentralCloud/CloudButtons/StartButton")
+	continue_button = get_node_or_null("CentralCloud/CloudButtons/ContinueButton")
+	history_button = get_node_or_null("CentralCloud/CloudButtons/HistoryButton")
+	settings_button = get_node_or_null("LeftPanel/SettingsButton")
+	exit_button = get_node_or_null("ExitButton")
 	
-	# Добавляем hover эффекты для кнопок
-	_setup_button_animations(start_button)
-	_setup_button_animations(continue_button)
-	_setup_button_animations(history_button)
+	# Скрываем настройки при старте
+	add_child(settings_menu)
+	settings_menu.hide()
 	
-	# Анимация заголовка при появлении
-	_animate_title_in()
+	# Подключаем клики персонажей программно
+	if characters_container:
+		for child in characters_container.get_children():
+			if child is TextureButton:
+				child.pressed.connect(_on_character_pressed.bind(child))
+	
+	# Подключаем кнопки
+	if start_button:
+		start_button.pressed.connect(_on_start_button_pressed)
+	if continue_button:
+		continue_button.pressed.connect(_on_continue_button_pressed)
+		continue_button.disabled = not SaveManager.save_exists()
+	if history_button:
+		history_button.pressed.connect(_on_history_button_pressed)
+	if settings_button:
+		settings_button.pressed.connect(_on_settings_button_pressed)
+	if exit_button:
+		exit_button.pressed.connect(_on_exit_button_pressed)
 
-func _setup_button_animations(button: Button) -> void:
-	button.mouse_entered.connect(func(): _animate_button_hover(button, true))
-	button.mouse_exited.connect(func(): _animate_button_hover(button, false))
-
-func _animate_button_hover(button: Button, is_hovering: bool) -> void:
-	var target_scale = HOVER_SCALE if is_hovering else NORMAL_SCALE
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_BACK)
-	tween.tween_property(button, "scale", target_scale, ANIMATION_DURATION)
-
-func _animate_title_in() -> void:
-	title_label.modulate.a = 0.0
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_BACK)
-	tween.tween_property(title_label, "modulate:a", 1.0, 0.5)
-	tween.parallel().tween_property(title_label, "position:y", title_label.position.y - 10, 0.5)
-
-func _on_start() -> void:
+# Логика кнопок
+func _on_start_button_pressed():
 	GameState.reset_game()
 	EventBus.scene_transition.emit("res://scenes/gameplay/MapView.tscn")
 
-func _on_continue() -> void:
+func _on_continue_button_pressed():
 	SaveManager.load_game()
 	EventBus.scene_transition.emit("res://scenes/gameplay/MapView.tscn")
 
-func _on_history() -> void:
+func _on_history_button_pressed():
 	EventBus.scene_transition.emit("res://scenes/ui/GameHistory.tscn")
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+func _on_settings_button_pressed():
+	settings_menu.show()
 
-func _animate_button_press(button: Button) -> void:
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.tween_property(button, "scale", Vector2(0.95, 0.95), 0.1)
-	tween.tween_property(button, "scale", NORMAL_SCALE, 0.1)
+func _on_exit_button_pressed():
+	get_tree().quit()
+
+# Анимация персонажа при клике
+func _on_character_pressed(character_node):
+	var anim_player = character_node.get_node("AnimationPlayer")
+	if anim_player:
+		# Проигрываем рандомную анимацию или конкретную для этого героя
+		if anim_player.has_animation("interact"):
+			anim_player.play("interact")
+		else:
+			# Если нет спец. анимации, делаем простой "прыжок" кодом
+			var tween = create_tween()
+			tween.tween_property(character_node, "scale", Vector2(1.2, 0.8), 0.1)
+			tween.tween_property(character_node, "scale", Vector2(1.0, 1.0), 0.1)

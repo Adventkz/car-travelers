@@ -219,15 +219,15 @@ func _on_character_dialogue(char_id: String) -> void:
 				]
 			}
 		]
-		dialogue_view.dialogue_finished.connect(_on_family_dialogue_finished.unbind(1))
+		dialogue_view.dialogue_finished.connect(_on_family_dialogue_finished)
 		dialogue_view.show_dialogue("family_chat_" + char_id, lines)
 	else:
 		print("DialogueView не найден")
 
-func _on_family_dialogue_finished(_dialogue_id: String) -> void:
+func _on_family_dialogue_finished(dialogue_id: String) -> void:
 	var dialogue_view = get_node_or_null("/root/DialogueView")
 	if dialogue_view:
-		dialogue_view.dialogue_finished.disconnect(_on_family_dialogue_finished.unbind(1))
+		dialogue_view.dialogue_finished.disconnect(_on_family_dialogue_finished)
 
 func _log_dialogue(char_id: String, result: String, resource_changes: Dictionary) -> void:
 	var log_entry := {

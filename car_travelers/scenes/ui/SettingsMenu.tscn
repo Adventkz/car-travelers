@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://settingsmenu"]
+
+[ext_resource type="Script" path="res://scripts/ui/settings_menu.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="PurpleBorder"]
+bg_color = Color(0.95, 0.95, 0.95, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.5, 0.2, 0.7, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="SettingsMenu" type="Control" unique_id=42432294]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="SettingsOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="WindowPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+z_index = 10
+theme_override_styles/panel = SubResource("PurpleBorder")
+
+[node name="VBoxMain" type="VBoxContainer" parent="WindowPanel"]
+layout_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+separation = 30
+
+[node name="Title" type="Label" parent="WindowPanel/VBoxMain"]
+layout_mode = 2
+text = "НАСТРОЙКИ ><<3"
+horizontal_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="WindowPanel/VBoxMain"]
+layout_mode = 2
+alignment = 1
+separation = 15
+
+[node name="MusicIcon" type="ColorRect" parent="WindowPanel/VBoxMain/MusicRow"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="MusicSlider" type="HSlider" parent="WindowPanel/VBoxMain/MusicRow"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1.0
+value = 0.8
+step = 0.01
+
+[node name="MusicLabel" type="Label" parent="WindowPanel/VBoxMain/MusicRow"]
+layout_mode = 2
+text = "МУЗЫКА"
+
+[node name="SfxRow" type="HBoxContainer" parent="WindowPanel/VBoxMain"]
+layout_mode = 2
+alignment = 1
+separation = 15
+
+[node name="SfxIcon" type="ColorRect" parent="WindowPanel/VBoxMain/SfxRow"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="SfxSlider" type="HSlider" parent="WindowPanel/VBoxMain/SfxRow"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1.0
+value = 0.8
+step = 0.01
+
+[node name="SfxLabel" type="Label" parent="WindowPanel/VBoxMain/SfxRow"]
+layout_mode = 2
+text = "ЭФФЕКТЫ"
+
+[node name="SocialRow" type="HBoxContainer" parent="WindowPanel/VBoxMain"]
+layout_mode = 2
+alignment = 1
+separation = 15
+
+[node name="TGButton" type="Button" parent="WindowPanel/VBoxMain/SocialRow"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "📱"
+
+[node name="TGLabel" type="Label" parent="WindowPanel/VBoxMain/SocialRow"]
+layout_mode = 2
+text = "(ССЫЛКА НА БОТ/ТГК)"

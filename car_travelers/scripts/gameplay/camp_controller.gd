@@ -37,25 +37,30 @@ func start_camp_dialogue(dialogue_id: String) -> void:
 	else:
 		push_warning("camp_controller: DialogueView autoload not found")
 
-func _on_dialogue_finished(_dialogue_id: String) -> void:
+func _on_dialogue_finished(dialogue_id: String) -> void:
 	var parent_scene := get_parent()
 	if parent_scene and parent_scene.has_method("on_dialogue_finished"):
 		parent_scene.on_dialogue_finished()
 
 func end_camp() -> void:
-	# Обязательное потребление еды каждую ночь
+	# Казуальный режим: потребление еды каждую ночь
 	var family_size := 6  # 6 человек в семье
 	var food_cost := family_size * 2  # 2 еды на человека
+	
+	# Если еды недостаточно, тратим всё что есть и добавляем штраф стрессу
 	if ResourceManager.food < food_cost:
-		_show_game_over("Недостаточно еды для ночёвки!")
-		return
+		var actual_cost := ResourceManager.food
+		ResourceManager.modify("food", -actual_cost, "Ночёвка (недоедание)")
+		ResourceManager.modify("stress", 15, "Голод семьи")
+		print("Недостаточно еды! Семья голодает, но продолжает путь (казуальный режим)")
+	else:
+		ResourceManager.modify("food", -food_cost, "Ночёвка")
 	
-	ResourceManager.modify("food", -food_cost, "Ночёвка")
-	
-	# Проверяем Game Over если еда закончилась после потребления
+	# Если еда закончилась, восстанавливаем минимум вместо Game Over
 	if ResourceManager.food <= 0:
-		_show_game_over("Еда закончилась! Семья не смогла пережить ночь.")
-		return
+		ResourceManager.food = 5
+		ResourceManager.modify("stress", 10, "Критический голод")
+		print("Еда закончилась! Найдено немного припасов (казуальный режим)")
 	
 	ResourceManager.modify("stress", -5, "Отдых")
 	GameState.advance_day()

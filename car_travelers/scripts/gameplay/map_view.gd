@@ -1,5 +1,5 @@
 # res://scripts/gameplay/map_view.gd
-extends Node2D
+extends Control
 
 @onready var nodes_container: Node2D = $NodesContainer
 @onready var info_label: Label = $InfoPanel/InfoLabel
@@ -11,6 +11,10 @@ extends Node2D
 
 var _controller: Node
 var _node_buttons: Array[Button] = []
+var _map_nodes: Array = []
+var _current_travel_node_id: String = ""
+var _current_travel_node_data: Dictionary = {}
+var _selected_start_direction: String = ""
 
 const NODE_BASE_SIZE := Vector2(140, 70)
 const NODE_HOVER_SCALE := 1.1
@@ -29,6 +33,10 @@ func _ready() -> void:
 	_apply_anime_style()
 	_animate_title()
 	_build_map_ui()
+	
+	# Подписываемся на сигнал выбора направления
+	if EventBus.has_signal("start_direction_selected"):
+		EventBus.start_direction_selected.connect(_on_start_direction_selected)
 	# Звуки отключены
 
 func _apply_anime_style() -> void:
@@ -110,13 +118,13 @@ func _build_map_ui() -> void:
 		return
 	file.close()
 
-	var nodes: Array = (json.data as Dictionary).get("nodes", [])
+	_map_nodes = (json.data as Dictionary).get("nodes", [])
 	var current_node_id := GameState.current_node_id
 	
 	# Определяем доступные узлы
-	var available_nodes := _get_available_nodes(current_node_id, nodes)
+	var available_nodes := _get_available_nodes(current_node_id, _map_nodes)
 	
-	for node_data in nodes:
+	for node_data in _map_nodes:
 		var pos: Array = node_data.get("position", [0, 0])
 		var node_type: String = node_data.get("type", "default")
 		var node_id: String = node_data.get("node_id", "")
@@ -192,8 +200,8 @@ func _build_map_ui() -> void:
 		btn.add_theme_stylebox_override("hover", btn_style)
 		btn.add_theme_stylebox_override("pressed", btn_style)
 		
-		# Кнопка активна только для доступных узлов
-		btn.disabled = not is_available
+		# Кнопка активна для доступных узлов и текущего узла
+		btn.disabled = not is_available and not is_current
 		
 		btn.pressed.connect(_on_node_selected.bind(node_id, node_data))
 		
@@ -263,8 +271,23 @@ func _on_node_hover(container: Control, is_hovering: bool, node_data: Dictionary
 		SaveManager.save_game()
 
 func _on_node_selected(node_id: String, node_data: Dictionary) -> void:
-	var connected: Array = node_data.get("connected_nodes", [])
-	if not connected.is_empty() and GameState.current_node_id in connected:
+	# Проверяем: есть ли выбранный узел в списке connected_nodes текущего узла
+	var current_connected: Array = []
+	for node in _map_nodes:
+		if node.get("node_id", "") == GameState.current_node_id:
+			current_connected = node.get("connected_nodes", [])
+			break
+	
+	# Если кликнули на текущий узел
+	if node_id == GameState.current_node_id:
+		# Если это стартовый узел (Алматы), показываем диалог выбора направления
+		if node_id == "node_start" and not current_connected.is_empty():
+			_show_start_location_dialogue(node_data, current_connected)
+		else:
+			_show_node_info(node_data)
+		return
+	
+	if current_connected.has(node_id):
 		_show_travel_confirmation(node_id, node_data)
 
 func _show_travel_confirmation(node_id: String, node_data: Dictionary) -> void:
@@ -308,23 +331,101 @@ func _show_travel_confirmation(node_id: String, node_data: Dictionary) -> void:
 			}
 		]
 		
-		dialogue_view.dialogue_finished.connect(_on_travel_dialogue_finished.bind(node_id, node_data))
+		_current_travel_node_id = node_id
+		_current_travel_node_data = node_data
+		dialogue_view.dialogue_finished.connect(_on_travel_dialogue_finished)
 		dialogue_view.show_dialogue("travel_confirmation", lines)
 
-func _on_travel_dialogue_finished(node_id: String, node_data: Dictionary, dialogue_id: String) -> void:
-	var dialogue_view = get_node_or_null("/root/DialogueView")
-	if dialogue_view:
-		dialogue_view.dialogue_finished.disconnect(_on_travel_dialogue_finished.bind(node_id, node_data))
+func _on_travel_dialogue_finished(dialogue_id: String) -> void:
+	if dialogue_id == "travel_confirmation":
+		var dialogue_view = get_node_or_null("/root/DialogueView")
+		if dialogue_view:
+			dialogue_view.dialogue_finished.disconnect(_on_travel_dialogue_finished)
 	
 	# Проверяем какой выбор был сделан через флаг в GameState
 	if GameState.get_flag("travel_confirmed"):
 		GameState.set_flag("travel_confirmed", false)
-		_controller.select_node(node_id)
-		SaveManager.save_game()
+		_controller.select_node(_current_travel_node_id)
 	elif GameState.get_flag("go_to_camp"):
 		GameState.set_flag("go_to_camp", false)
 		GameState.set_phase(GameState.Phase.CAMP)
 		EventBus.scene_transition.emit("res://scenes/gameplay/CampScene.tscn")
+
+func _show_node_info(node_data: Dictionary) -> void:
+	var node_id: String = node_data.get("node_id", "")
+	var display_name: String = node_data.get("display_name", node_id)
+	var terrain: String = node_data.get("terrain", "asphalt")
+	var dist: float = float(node_data.get("distance_km", 0))
+	
+	var info_text := "Текущее местоположение: %s\n\n" % display_name
+	info_text += "Тип местности: %s\n" % terrain
+	info_text += "Расстояние от старта: %d км\n" % int(dist)
+	
+	var connected: Array = node_data.get("connected_nodes", [])
+	if not connected.is_empty():
+		info_text += "\nДоступные направления:\n"
+		for conn_id in connected:
+			for node in _map_nodes:
+				if node.get("node_id", "") == conn_id:
+					info_text += "  • %s\n" % node.get("display_name", conn_id)
+	
+	info_label.text = info_text
+
+func _show_start_location_dialogue(node_data: Dictionary, connected_nodes: Array) -> void:
+	var display_name: String = node_data.get("display_name", "Алматы")
+	
+	var dialogue_text := "Вы находитесь в %s.\n\n" % display_name
+	dialogue_text += "Куда направимся?\n\n"
+	
+	var choices := []
+	for conn_id in connected_nodes:
+		for node in _map_nodes:
+			if node.get("node_id", "") == conn_id:
+				var conn_name: String = node.get("display_name", conn_id)
+				var dist: float = float(node.get("distance_km", 0))
+				var terrain: String = node.get("terrain", "asphalt")
+				var fuel_cost: int = ResourceManager.calculate_fuel_cost(dist, terrain)
+				
+				choices.append({
+					"text": "%s (%d км, топлива: -%d)" % [conn_name, int(dist), fuel_cost],
+					"mutations": [],
+					"jump": conn_id
+				})
+	
+	choices.append({
+		"text": "Остаться здесь",
+		"mutations": [],
+		"jump": "end"
+	})
+	
+	var lines := [
+		{
+			"speaker": "Навигатор",
+			"text": dialogue_text,
+			"portrait": "",
+			"choices": choices
+		}
+	]
+	
+	var dialogue_view = get_node_or_null("/root/DialogueView")
+	if dialogue_view and dialogue_view.has_method("show_dialogue"):
+		_current_travel_node_id = ""
+		dialogue_view.dialogue_finished.connect(_on_start_dialogue_finished)
+		dialogue_view.show_dialogue("start_location", lines)
+
+func _on_start_dialogue_finished(dialogue_id: String) -> void:
+	if dialogue_id == "start_location":
+		var dialogue_view = get_tree().root.find_child("DialogueView", true, false)
+		if dialogue_view:
+			dialogue_view.dialogue_finished.disconnect(_on_start_dialogue_finished)
+
+func _on_start_direction_selected(direction: String) -> void:
+	_selected_start_direction = direction
+	# Находим данные узла и запускаем путешествие
+	for node in _map_nodes:
+		if node.get("node_id", "") == direction:
+			_controller.select_node(direction)
+			break
 
 func _save_game_result(won: bool) -> void:
 	GameState.set_game_over(won)
