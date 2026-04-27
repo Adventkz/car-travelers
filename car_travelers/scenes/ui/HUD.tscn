@@ -7,47 +7,105 @@ layer = 5
 script = ExtResource("1")
 
 [node name="HUDContainer" type="HBoxContainer" parent="." unique_id=363189827]
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 1272.0
-offset_bottom = 48.0
-theme_override_constants/separation = 12
+anchors_preset = 15
+anchor_right = 1.0
+offset_top = 8.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
 
-[node name="FuelBar" type="ProgressBar" parent="HUDContainer" unique_id=587684155]
-custom_minimum_size = Vector2(120, 24)
+[node name="MenuButton" type="Button" parent="HUDContainer" unique_id=486881858]
+layout_mode = 2
+text = "Меню"
+
+[node name="Spacer" type="Control" parent="HUDContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FuelVBox" type="VBoxContainer" parent="HUDContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FuelBar" type="ProgressBar" parent="HUDContainer/FuelVBox"]
+custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 step = 1.0
 
-[node name="Label" type="Label" parent="HUDContainer/FuelBar" unique_id=364859208]
+[node name="ValueLabel" type="Label" parent="HUDContainer/FuelVBox/FuelBar"]
 layout_mode = 0
 text = "100"
 
-[node name="FoodBar" type="ProgressBar" parent="HUDContainer" unique_id=1566413504]
-custom_minimum_size = Vector2(120, 24)
+[node name="FuelLabel" type="Label" parent="HUDContainer/FuelVBox"]
+layout_mode = 2
+text = "Топливо"
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="FoodVBox" type="VBoxContainer" parent="HUDContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FoodBar" type="ProgressBar" parent="HUDContainer/FoodVBox"]
+custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 step = 1.0
 
-[node name="Label" type="Label" parent="HUDContainer/FoodBar" unique_id=1024306065]
+[node name="ValueLabel" type="Label" parent="HUDContainer/FoodVBox/FoodBar"]
 layout_mode = 0
 text = "100"
 
-[node name="StressBar" type="ProgressBar" parent="HUDContainer" unique_id=1600490158]
-custom_minimum_size = Vector2(120, 24)
+[node name="FoodLabel" type="Label" parent="HUDContainer/FoodVBox"]
+layout_mode = 2
+text = "Еда"
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="StressVBox" type="VBoxContainer" parent="HUDContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="StressBar" type="ProgressBar" parent="HUDContainer/StressVBox"]
+custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 step = 1.0
 
-[node name="Label" type="Label" parent="HUDContainer/StressBar" unique_id=1034811164]
+[node name="ValueLabel" type="Label" parent="HUDContainer/StressVBox/StressBar"]
 layout_mode = 0
 text = "0"
 
-[node name="VehicleHPBar" type="ProgressBar" parent="HUDContainer" unique_id=51993207]
-custom_minimum_size = Vector2(120, 24)
+[node name="StressLabel" type="Label" parent="HUDContainer/StressVBox"]
+layout_mode = 2
+text = "Стресс"
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="VehicleVBox" type="VBoxContainer" parent="HUDContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="VehicleHPBar" type="ProgressBar" parent="HUDContainer/VehicleVBox"]
+custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 step = 1.0
 
-[node name="Label" type="Label" parent="HUDContainer/VehicleHPBar" unique_id=323835000]
+[node name="ValueLabel" type="Label" parent="HUDContainer/VehicleVBox/VehicleHPBar"]
 layout_mode = 0
 text = "100"
+
+[node name="VehicleLabel" type="Label" parent="HUDContainer/VehicleVBox"]
+layout_mode = 2
+text = "Авто"
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="HUDContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="DayLabel" type="Label" parent="HUDContainer" unique_id=38695547]
 layout_mode = 2
@@ -57,10 +115,18 @@ text = "День 1"
 layout_mode = 2
 text = "MAP"
 
-[node name="PartsLabel" type="Label" parent="HUDContainer" unique_id=183483757]
+[node name="RightPanel" type="HBoxContainer" parent="HUDContainer"]
 layout_mode = 2
-text = "Запчасти: 0"
+theme_override_constants/separation = 8
 
-[node name="MenuButton" type="Button" parent="HUDContainer" unique_id=486881858]
+[node name="VehicleManagerButton" type="Button" parent="HUDContainer/RightPanel"]
 layout_mode = 2
-text = "Меню"
+text = "�"
+
+[node name="FamilyStatsButton" type="Button" parent="HUDContainer/RightPanel"]
+layout_mode = 2
+text = "👨‍👩‍👧‍👦"
+
+[node name="ResourceLogButton" type="Button" parent="HUDContainer/RightPanel"]
+layout_mode = 2
+text = "📊"

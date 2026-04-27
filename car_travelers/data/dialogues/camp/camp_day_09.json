@@ -1,0 +1,45 @@
+{
+  "lines": [
+    {
+      "speaker": "Асель",
+      "text": "Последний рывок. Давайте покажем, на что мы способны.",
+      "portrait": ""
+    },
+    {
+      "speaker": "Зарина",
+      "text": "Мы сможем. Я верю в нас.",
+      "portrait": ""
+    },
+    {
+      "speaker": "Сарын",
+      "text": "Как подготовимся к последнему этапу?",
+      "choices": [
+        {
+          "text": "Проверить всё в машине",
+          "mutations": [
+            {"type": "vehicle_hp", "delta": 5}
+          ]
+        },
+        {
+          "text": "Сделать плотный завтрак",
+          "penalty": {
+            "resource": "food",
+            "amount": 8,
+            "reason": "Плотный завтрак"
+          },
+          "mutations": [
+            {"type": "stress", "delta": -6}
+          ]
+        },
+        {
+          "text": "Сразу ехать",
+          "penalty": {
+            "resource": "stress",
+            "amount": 5,
+            "reason": "Все в напряжении"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -59,7 +59,7 @@ func reset() -> void:
 	GameState.current_chapter = 1
 	GameState.current_node_id = "node_start"
 	GameState.active_family = "family_a"
-	GameState.parts_currency = 0
+	GameState.parts_currency = 50  # Начальные запчасти для апгрейда
 	GameState.dialogue_flags = {}
 	ResourceManager.fuel = ResourceManager.MAX_FUEL
 	ResourceManager.food = ResourceManager.MAX_FOOD

@@ -3,12 +3,12 @@ extends Control
 
 @onready var parts_label := $Panel/VBoxContainer/PartsLabel
 @onready var upgrades_container := $Panel/VBoxContainer/ScrollContainer/UpgradesContainer
-@onready var back_button := $Panel/VBoxContainer/BackButton
+@onready var close_button := $CloseButton
 
 var _upgrade_buttons := {}
 
 func _ready() -> void:
-	back_button.pressed.connect(_on_back_to_management)
+	close_button.pressed.connect(_on_back_to_management)
 	_create_upgrade_ui()
 	_refresh_ui()
 
@@ -86,11 +86,12 @@ func _on_buy_upgrade(upgrade_id: String) -> void:
 	var controller := get_node_or_null("/root/VehicleUpgradeController")
 	if controller:
 		if controller.purchase_upgrade(upgrade_id):
-			AudioManager.play_success()
+			# Звуки отключены
 			_refresh_ui()
 		else:
-			AudioManager.play_failure()
+			# Звуки отключены
+			pass
 
 func _on_back_to_management() -> void:
-	AudioManager.play_click()
+	# Звуки отключены
 	EventBus.scene_transition.emit("res://scenes/gameplay/ManagementPanel.tscn")

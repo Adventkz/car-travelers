@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://gameover"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1"]
+[ext_resource type="Script" path="res://assets/visuals/backgrounds/main_menu_bg.gd" id="2"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.101961, 0.101961, 0.180392, 1)
+script = ExtResource("2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "ИГРА ОКОНЧЕНА"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 48
+
+[node name="ReasonLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Причина поражения..."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="StatsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Дней выжито: 0"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "В ГЛАВНОЕ МЕНЮ"
+custom_minimum_size = Vector2(0, 60)

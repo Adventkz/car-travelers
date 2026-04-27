@@ -1,0 +1,50 @@
+{
+  "lines": [
+    {
+      "speaker": "Сарын",
+      "text": "Почти у цели. Балхаш уже виден на горизонте.",
+      "portrait": ""
+    },
+    {
+      "speaker": "Данияр",
+      "text": "Ура! Мы сделали это!",
+      "portrait": ""
+    },
+    {
+      "speaker": "Сарын",
+      "text": "Как завершим путь?",
+      "choices": [
+        {
+          "text": "Ускорить до финиша",
+          "penalties": [
+            {
+              "resource": "vehicle_hp",
+              "amount": 10,
+              "reason": "Быстрая езда навредила авто"
+            },
+            {
+              "resource": "fuel",
+              "amount": 10,
+              "reason": "Перерасход топлива"
+            }
+          ],
+          "mutations": [
+            {"type": "stress", "delta": -5}
+          ]
+        },
+        {
+          "text": "Доехать аккуратно",
+          "mutations": [
+            {"type": "stress", "delta": -3}
+          ]
+        },
+        {
+          "text": "Сделать привал перед финишем",
+          "mutations": [
+            {"type": "stress", "delta": -7}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "lines": [
+    {
+      "speaker": "Сарын",
+      "text": "Это был долгий путь. Но мы его прошли вместе.",
+      "portrait": ""
+    },
+    {
+      "speaker": "Асель",
+      "text": "И это главное. Мы - команда.",
+      "portrait": ""
+    },
+    {
+      "speaker": "Сарын",
+      "text": "Что скажем семье?",
+      "choices": [
+        {
+          "text": "Я горжусь вами всеми",
+          "mutations": [
+            {"type": "stress", "delta": -15}
+          ]
+        },
+        {
+          "text": "Нам повезло",
+          "penalty": {
+            "resource": "stress",
+            "amount": 8,
+            "reason": "Семья расстроилась"
+          }
+        },
+        {
+          "text": "Это только начало",
+          "mutations": [
+            {"type": "stress", "delta": -5}
+          ]
+        }
+      ]
+    }
+  ]
+}

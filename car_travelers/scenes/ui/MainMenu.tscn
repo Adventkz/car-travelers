@@ -1,6 +1,34 @@
 [gd_scene format=3 uid="uid://cpaqcdbce7cm6"]
 
 [ext_resource type="Script" uid="uid://cb2ngoulq0dc" path="res://scripts/ui/main_menu.gd" id="1"]
+[ext_resource type="Script" path="res://assets/visuals/backgrounds/main_menu_bg.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://icon_start" path="res://assets/ui/icons/icon_start.svg" id="3"]
+[ext_resource type="Texture2D" uid="uid://icon_continue" path="res://assets/ui/icons/icon_continue.svg" id="4"]
+[ext_resource type="Texture2D" uid="uid://icon_book" path="res://assets/ui/icons/icon_book.svg" id="5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.231, 0.27, 0.38, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.914, 0.271, 0.376, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.306, 0.502, 0.773, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.306, 0.502, 0.773, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="MainMenu" type="Control" unique_id=42432292]
 layout_mode = 3
@@ -19,9 +47,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.101961, 0.101961, 0.180392, 1)
+script = ExtResource("2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1418311685]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -41,9 +69,94 @@ text = "Автопутешественники"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1100707338]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2")
+
+[node name="StartButtonHBox" type="HBoxContainer" parent="VBoxContainer/StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="StartIcon" type="TextureRect" parent="VBoxContainer/StartButton/StartButtonHBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3")
+stretch_mode = 5
+
+[node name="StartLabel" type="Label" parent="VBoxContainer/StartButton/StartButtonHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.914, 0.271, 0.376, 1)
 text = "Начать"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=899335980]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2")
+
+[node name="ContinueButtonHBox" type="HBoxContainer" parent="VBoxContainer/ContinueButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="ContinueIcon" type="TextureRect" parent="VBoxContainer/ContinueButton/ContinueButtonHBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4")
+stretch_mode = 5
+
+[node name="ContinueLabel" type="Label" parent="VBoxContainer/ContinueButton/ContinueButtonHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.914, 0.271, 0.376, 1)
 text = "Продолжить"
+
+[node name="HistoryButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2")
+
+[node name="HistoryButtonHBox" type="HBoxContainer" parent="VBoxContainer/HistoryButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HistoryIcon" type="TextureRect" parent="VBoxContainer/HistoryButton/HistoryButtonHBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("5")
+stretch_mode = 5
+
+[node name="HistoryLabel" type="Label" parent="VBoxContainer/HistoryButton/HistoryButtonHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.914, 0.271, 0.376, 1)
+text = "История игр"
