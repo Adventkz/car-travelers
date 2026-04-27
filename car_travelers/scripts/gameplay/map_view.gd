@@ -77,7 +77,7 @@ func _animate_title() -> void:
 	
 	# Стилизация текста заголовка
 	title_label.add_theme_font_size_override("font_size", 72)
-	title_label.add_theme_color_override("font_color", Color(0.91, 0.27, 0.38, 1.0))
+	title_label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
 	
 	# Добавляем отступы между элементами в HBox
 	title_hbox.add_theme_constant_override("separation", 20)
@@ -91,14 +91,14 @@ func _animate_title() -> void:
 	tween.parallel().tween_property(title_panel, "modulate:a", 1.0, 1.2)
 	tween.parallel().tween_property(title_panel, "scale", Vector2(1.0, 1.0), 1.2)
 	
-	# Градиентная анимация цвета текста
-	tween.tween_interval(0.3)
+	# Плавная градиентная анимация цвета текста
+	tween.tween_interval(0.2)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_loops()
-	tween.tween_property(title_label, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.0)
-	tween.tween_property(title_label, "modulate", Color(1.0, 0.85, 0.85, 1.0), 0.8)
-	tween.tween_property(title_label, "modulate", Color(1.0, 0.7, 0.7, 1.0), 0.8)
-	tween.tween_property(title_label, "modulate", Color(1.0, 0.85, 0.85, 1.0), 0.8)
-	tween.tween_property(title_label, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.8)
+	tween.tween_property(title_label, "modulate", Color(0.91, 0.27, 0.38, 1.0), 1.0)
+	tween.tween_property(title_label, "modulate", Color(1.0, 0.5, 0.6, 1.0), 1.0)
+	tween.tween_property(title_label, "modulate", Color(1.0, 0.7, 0.8, 1.0), 1.0)
+	tween.tween_property(title_label, "modulate", Color(1.0, 0.5, 0.6, 1.0), 1.0)
 
 func _build_map_ui() -> void:
 	var file := FileAccess.open("res://data/routes/chapter_01.json", FileAccess.READ)
