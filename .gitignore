@@ -26,6 +26,11 @@ Thumbs.db
 
 # Build output
 builds/
+apk/
+*.apk
+*.idsig
+*.jks
+*.keystore
 
 # User saves (не коммитить)
 user://
